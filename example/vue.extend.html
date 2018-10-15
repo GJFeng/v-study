@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.extend 扩展实例构造器</title>
+    <style>
+    
+    .green{
+        color:green;
+    }
+    </style>
+</head>
+<body>
+    <h1>vue.extend 扩展实例构造器</h1>
+    <hr>
+    <author></author>
+    <div id='author'></div>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+  var authorEx=Vue.extend({
+      template:'<p><a :href="auSrc">{{auName}}</a></p>',
+      data:function(){
+          return {
+              auSrc:'https://www.bilibili.com',
+              auName:'bilibili'
+          }
+      }
+  })
+  new authorEx().$mount('author')
+  new authorEx().$mount('#author')
+</script>
+</html>

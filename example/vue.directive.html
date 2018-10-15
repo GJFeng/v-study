@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.directive 自定义指令</title>
+    <style>
+    
+    .green{
+        color:green;
+    }
+    </style>
+</head>
+<body>
+    <h1>vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <span v-gjfeng='color'>{{count}}</span><br>
+        <br>
+        <button @click='add' >ADD</button>
+    </div>
+    <br>
+    <button onclick="unbind()">解绑</button>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+    function unbind(){
+        console.log(app)
+        app.$destroy()
+    }
+    Vue.directive('gjfeng',{
+        bind:function(){console.log('1-----bind')},
+        inserted:function(){console.log('2-----inserted')},
+        update:function(){console.log('3-----update')},
+        componentUpdated:function(){console.log('4-----componentUpdated')},
+        unbind:function(){console.log('5-----unbind')}
+    })
+    var app=new Vue({
+        el:'#app',
+        data:{
+            count:100,
+            color:'green'
+        },
+        methods:{
+            add:function(){
+                 this.count ++;
+            }
+        }
+    })
+</script>
+</html>

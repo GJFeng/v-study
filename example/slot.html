@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slot 内置组件</title>
+</head>
+<body>
+    <h1>Slot 内置组件</h1>
+    <hr>
+    <div id="app">
+        <author>
+            <p slot='name'>{{data.name}}</p>
+            <p slot='url'>{{data.url}}</p>
+        </author>
+        
+    </div>
+    <template id='info'>
+            <div>
+                <p>作者：<slot name='name'></slot></p>
+                <p>地址：<slot name='url'></slot></p>
+            </div>
+        </template>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var cpt={
+        template:'#info'
+    }
+    var app=new Vue({
+        el:'#app',
+        data:{
+            data:{
+                name:'GJFeng',
+                url:'104.194.91.107:27895'
+            }
+        },
+        components:{
+            'author':cpt
+        }
+    })
+</script>
+</html>

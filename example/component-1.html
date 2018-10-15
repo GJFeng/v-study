@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component 组件-1</title>
+    <style>
+    
+    .green{
+        color:green;
+    }
+    </style>
+</head>
+<body>
+    <h1>Component 组件-1</h1>
+    <hr>
+    <div id="app">
+        <author></author>
+        <ppa></ppa>
+    </div>
+    <div id="app1">
+        <author></author>
+        <!-- <ppa></ppa> -->
+    </div>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+Vue.component('author',{
+    template:`
+    <p style='color:red'>我是全局组件</p>
+    `
+})
+
+var app= new Vue({
+    el:'#app',
+    components:{
+        'ppa':{
+            template:`
+             <p style='color:blue'>我是局部组件</p>
+            `
+        }
+    }
+  })
+  new Vue({
+    el:'#app1',
+  })
+</script>
+</html>

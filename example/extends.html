@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Extends Option 扩展选项</title>
+</head>
+<body>
+    <h1>Extends Option 扩展选项</h1>
+    <hr>
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click='add()'>add</button>
+    </div>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var lod={
+        updated:function(){
+            console.log("数据放生变化,变化成"+this.num+".");
+        },
+    }
+
+    var app=new Vue({
+        el:'#app',
+        data:{
+            count:1
+        },
+        methods:{
+            add:function(){
+                this.count++
+                console.log("我是原生的方法。")
+            }
+        },
+        updated:function(){
+            console.log("构造器里的updated方法。")
+        },
+        extends:lod
+    })
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.set 全局操作</title>
+    <style>
+    
+    .green{
+        color:green;
+    }
+    </style>
+</head>
+<body>
+    <h1>vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        <p v-cloak>{{count}}</p>
+        <br>
+        <button @click='add()'>ADD</button>
+        <button onclick='newAdd()'>ADD</button>
+        <hr>
+        <h3>数组</h3>
+        <ul>
+            <li v-for='item in arr'>{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+var newData={
+    count:1,
+    arr:['aaa','bbb','ccc']
+}
+
+var app= new Vue({
+    el:'#app',
+    data:newData,
+    methods:{
+        add:function(){
+            // newAdd()
+            console.log(this.count)
+        }
+    }
+
+  })
+//   newAdd();
+  function newAdd(){
+    //   Vue.set(newData,'count',4);
+    //   app.count++;
+    //   newData.count++;
+
+    // app.arr[1]='dddd';
+    // app.arr.push('dddd');
+      Vue.set(app.arr,1,'ddd');
+
+  }
+</script>
+</html>

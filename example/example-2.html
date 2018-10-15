@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Methods Dome</title>
+</head>
+<body>
+    <h1>Example Methods Dome</h1>
+    <hr>
+    <h3>$mount() 挂在方法</h3>
+    <div id="app">
+    </div>
+    <hr>
+    <h3>$destroy() 卸载方法</h3>
+    <button onclick="destroy()">卸载</button>
+    <hr>
+    <h3>$forceUpdate() 更新方法</h3>
+    <button onclick="reload()">更新</button>
+    <hr>
+    <h3>$nextTick() 数据修改方法</h3>
+    <button onclick="tick()">修改</button>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var vm=Vue.extend({
+        template:'<p>{{msg}}</p>',
+        data:function(){
+            return {
+                msg:'hello Vue'
+            }
+        },
+        destroyed:function(){
+            console.log('$destroy() 卸载方法')
+        },
+        updated:function(){
+            console.log('updated 更新后')
+        }
+    })
+   var $v=new vm().$mount('#app')
+   function destroy(){
+        $v.$destroy();
+   }
+   function reload(){
+        $v.$forceUpdate();
+   }
+   function tick(){
+       $v.msg='hello world';
+       $v.$nextTick(function(){
+            console.log('message更新完后我被调用了');
+       })
+   }
+</script>
+</html>

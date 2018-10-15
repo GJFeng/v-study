@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Methods Dome</title>
+</head>
+<body>
+    <h1>Example Methods Dome</h1>
+    <hr>
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click='add()'>add</button><br><br>
+        <button @click='reduce()'>reduce</button><br><br>
+        <button @click='reduceOnce()'>reduceOnce</button><br><br>
+        <button @click='off()'>off</button><br><br>
+    </div>
+    <hr>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var app= new Vue({
+        el:'#app',
+        data:{
+            count:1,
+        },
+        methods:{
+            add:function(){
+                this.count++;
+            }
+        }
+    })
+    app.$on('reduce',function(){
+        this.count--;
+        console.log('执行reduce');
+    })
+    function reduce (){
+        app.$emit('reduce')
+    }
+
+    app.$once('reduceOnce',function(){
+        this.count--;
+        console.log('只执行一次');
+    })
+    function reduceOnce (){
+        app.$emit('reduceOnce')
+    }
+    function off(){
+        app.$off('reduce')
+        console.log('关闭reduce事件');
+    }
+</script>
+</html>

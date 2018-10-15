@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component 组件-3</title>
+    <style>
+    
+    .green{
+        color:green;
+    }
+    </style>
+</head>
+<body>
+    <h1>Component 组件-3</h1>
+    <hr>
+    <div id="app">
+        <author :who='name'></author>
+    </div>
+
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+var children={
+    template:`
+             <p style='color:red'>我是 ...</p>
+            `,
+}
+var authorCpt={
+    template:`
+             <div>
+                <p style='color:blue'>我是{{who[0]}}</p>
+                <children></children>
+             </div>
+            `,
+            props:['who'],
+            components:{
+                'children':children
+            }
+}
+
+var app= new Vue({
+    el:'#app',
+    data:{
+        name:['GJFeng','liulu']
+    },
+    components:{
+        'author':authorCpt
+    }
+  })
+
+</script>
+</html>

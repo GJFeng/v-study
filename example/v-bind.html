@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind 实例</title>
+    
+</head>
+<style>
+    .className{
+        color:pink;
+    }
+    .classA{
+        color:#ff0051
+    }
+    .classB{
+        font-size:24px
+    }
+</style>
+<body>
+    <h1>v-bind 实例</h1>
+    <hr>
+    <div id="app">
+        <img :src="imgSrc" alt="" width="200px" >
+        <hr>
+        <div :class="className">1、绑定className</div>
+        <div :class="{classA:isOK}">2、绑定class中的判断</div>
+        <div :class="[classA,classB]">3、绑定class中的数组</div>
+        <div :class="isOK?classA:classB">4、绑定class中的三元表达式判断</div>
+        <div :style="{color:red,fontSize:font}">5、绑定style</div>
+        <div :style=styleObj>6、用对象绑定style样式</div>
+
+    </div>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        data:{
+            imgSrc:'/assets/img/DjFQMvhVsAEqdu1.jpg',
+            className:'className',
+            isOK:false,
+            classA:'classA',
+            classB:'classB',
+            red:'red',
+            font:'18px',
+            styleObj:{
+                color:'pink',
+                'fontSize':'24px'
+            }
+        }
+     
+    })
+</script>
+</html>

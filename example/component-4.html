@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component 组件-4</title>
+    <style>
+    
+    .green{
+        color:green;
+    }
+    </style>
+</head>
+<body>
+    <h1>Component 组件-4</h1>
+    <hr>
+    <div id="app">
+        <!-- <author :who='name'></author> -->
+        <component :is='cpt'></component>
+        <button @click='changeCpt()'>切换</button>
+    </div>
+
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript">
+var cptA={
+    template:`<div>I'm componentA</div>`
+}
+var cptB={
+    template:`<div>I'm componentB</div>`
+}
+var cptC={
+    template:`<div>I'm componentC</div>`
+}
+var app= new Vue({
+    el:'#app',
+    data:{
+        cpt:'cptA'
+    },
+    components:{
+        'cptA':cptA,
+        'cptB':cptB,
+        'cptC':cptC,
+    },
+    methods:{
+        changeCpt:function(){
+            var arr=['cptA','cptB','cptC'];
+            var num=Math.round(Math.random()*2);
+            if(this.cpt==arr[num]){
+                this.changeCpt();
+            }else{
+                this.cpt=arr[num];
+            }
+        }
+    }
+  })
+
+</script>
+</html>

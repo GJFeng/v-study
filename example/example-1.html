@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Methods Dome</title>
+</head>
+<body>
+    <h1>Example Methods Dome</h1>
+    <hr>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
+<script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        data:{
+            msg:'hello Vue'
+        },
+        beforeCreate:function(){console.log('1-beforeCreate 初始化之后');$('#app').html('我是jquery方法1');},
+        created:function(){console.log('2-created 创建完成');$('#app').append('我是jquery方法2');},
+        beforeMount:function(){console.log('3-beforeMount 挂载之前');$('#app').append('我是jquery方法3');},
+        mounted:function(){
+            $('#app').append('我是jquery方法4');
+        },
+        methods:{
+            add:function(){
+                console.log('测试外部调用add()')
+            }
+        }
+    })
+    app.add();
+    console.log(app)
+</script>
+</html>
